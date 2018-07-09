@@ -8,6 +8,15 @@ const server = http.createServer(app);
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ server });
 
+// Listen for new connections
+wss.on('connection', (socket) => {
+  // Listen for messages on that socket
+  socket.on('message', (msg) => {
+    msg = JSON.parse(msg);
+    console.log(msg);
+  });
+})
+
 server.listen(5000, () => {
   console.log(`Aw snap, now you're running.`)
 });
