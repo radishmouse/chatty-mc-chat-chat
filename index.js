@@ -10,10 +10,15 @@ const wss = new WebSocket.Server({ server });
 
 // Listen for new connections
 wss.on('connection', (socket) => {
+  // When they connect, say "hello"
+  socket.send('Hey, you are totally connected!');
   // Listen for messages on that socket
   socket.on('message', (msg) => {
-    msg = JSON.parse(msg);
+    // msg = JSON.parse(msg);
     console.log(msg);
+    wss.clients.forEach((client) => {
+      client.send(msg);
+    });
   });
 })
 
