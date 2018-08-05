@@ -1,6 +1,9 @@
 // step 1: create express app
 const express = require('express');
 const app = express();
+
+app.use(express.static('./frontend'))
+
 // step 2: create plain HTTP server
 const http = require('http');
 const server = http.createServer(app);
