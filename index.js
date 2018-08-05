@@ -10,6 +10,7 @@ const wss = new WebSocket.Server({ server });
 
 // Listen for new connections
 wss.on('connection', (socket) => {
+  console.log('somebody connected');
   // When they connect, say "hello"
   socket.send('Hey, you are totally connected!');
   // Listen for messages on that socket
